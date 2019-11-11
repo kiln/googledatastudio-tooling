@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-import * as parse from 'url-parse';
+import * as qs from 'querystringify';
 import {
   ClearInteraction,
   ConfigData,
@@ -91,9 +91,9 @@ export const getHeight = (): number => document.documentElement.clientHeight;
  * ```
  */
 export const getComponentId = (): string => {
-  const query = parse(window.location.href, true).query;
-  if (query.dscId) {
-    return query.dscId;
+  const query = qs.parse(window.location.search);
+  if (query['dscId']) {
+    return query['dscId'];
   } else {
     throw new Error(
       'dscId must be in the query parameters. ' +
